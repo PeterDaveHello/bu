@@ -6,3 +6,8 @@ notifications:
     on_failure: always
 sudo: false
 script: ./bu_test.sh
+addons:
+  apt:
+    packages:
+    - sed
+    - bc
