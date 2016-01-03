@@ -25,7 +25,7 @@ function bu_assert_expect_output()
 {
     local expected=$1
     local got=$2
-    echo "Expected \"$(echo.Blue $expected)\" but got \"$(echo.Blue $got)\" ..."
+    echo "Expected \"$expected\" but got \"$got\" ..."
 }
 
 function bu_assert()
@@ -41,7 +41,7 @@ function bu_assert()
         else
             _bu_assert_failed=$((_bu_assert_failed + 1))
             if [ -z "$3" ]; then
-                bu_assert_expect_output "$2" "$(echo.Blue `eval $1 2>&1 | $sed ':a;N;$!ba;s/\n/ \\n /g'`)"
+                bu_assert_expect_output "$2" "`eval $1 2>&1 | $sed ':a;N;$!ba;s/\n/ \\n /g'`"
             else
                 echo "$3"
             fi
