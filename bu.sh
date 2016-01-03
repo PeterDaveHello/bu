@@ -21,6 +21,13 @@ function bu_reset()
     _bu_assert_failed=0
 }
 
+function bu_assert_expect_output()
+{
+    local expected=$1
+    local got=$2
+    echo "Expected \"$(echo.Blue $expected)\" but got \"$(echo.Blue $got)\" ..."
+}
+
 function bu_assert()
 {
     local _bu_assert_start=$(bu_unix_nano_time)
@@ -34,7 +41,7 @@ function bu_assert()
         else
             _bu_assert_failed=$((_bu_assert_failed + 1))
             if [ -z "$3" ]; then
-                echo "Expected \"$(echo.Blue $2)\" but got \"$(echo.Blue `eval $1 2>&1 | $sed ':a;N;$!ba;s/\n/ \\n /g'`)\" ..."
+                bu_assert_expect_output "$2" "$(echo.Blue `eval $1 2>&1 | $sed ':a;N;$!ba;s/\n/ \\n /g'`)"
             else
                 echo "$3"
             fi
@@ -64,7 +71,7 @@ function bu_assert_return()
         else
             _bu_assert_failed=$((_bu_assert_failed + 1))
             if [ -z "$3" ]; then
-                echo "Expected \"$(echo.Blue $2)\" as exit code but got \"$(echo.Blue $_bu_assert_exit_code)\"..."
+                bu_assert_expect_output $2 $_bu_assert_exit_code
             else
                 echo "$3"
             fi
