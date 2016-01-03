@@ -23,3 +23,15 @@ bu_assert "function or command to call" "expected result" "self defined error me
 bu_assert_return "function or command to call" "expected exit code / return code"
 bu_assert_return "function or command to call" "expected exit code / return code" "self defined error message"
 ```
+
+### bu_todo_assert
+
+```sh
+bu_todo_assert "function or command to call, but not implmented or not finished yet" "expected result"
+```
+
+### bu_todo_assert_return
+
+```sh
+bu_todo_assert_return "function or command to call, but not implmented or not finished yet" "expected exit code / return code"
+```

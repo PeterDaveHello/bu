@@ -26,6 +26,7 @@ function bu_reset()
     _bu_time_failed_consumption=0
     _bu_assert_passed=0
     _bu_assert_failed=0
+    _bu_assert_todo=0
 }
 
 function bu_assert_expect_output()
@@ -33,6 +34,11 @@ function bu_assert_expect_output()
     local expected=$1
     local got=$2
     echo "Expected \"$expected\" but got \"$got\" ..."
+}
+
+function bu_todo_assert()
+{
+    _bu_assert_todo=$(_bu_assert_todo + 1)
 }
 
 function bu_assert()
@@ -61,6 +67,11 @@ function bu_assert()
     else
         _bu_time_failed_consumption=$((_bu_time_failed_consumption + _bu_assert_time_consumption))
     fi
+}
+
+function bu_todo_assert_return()
+{
+    _bu_assert_todo=$(_bu_assert_todo + 1)
 }
 
 function bu_assert_return()
@@ -101,6 +112,7 @@ function bu_test_result()
     echo.Magenta "Time consumption on passed test: $(bu_nano_sec_to_sec $_bu_time_passed_consumption) sec(s)"
     echo.Red     "Failed test ✗ $_bu_assert_failed"
     echo.Magenta "Time consumption on failed test: $(bu_nano_sec_to_sec $_bu_time_failed_consumption) sec(s)"
+    echo.Blue    "Todo functions - $_bu_assert_todo"
     echo.Purple  "Passed this round? $(bu_is_pass)"
 }
 
