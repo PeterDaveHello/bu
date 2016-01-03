@@ -5,7 +5,7 @@ function bu_init()
 {
     date="date"
     if [ "`uname`" = "FreeBSD" ] || [ "`uname`" = "Darwin" ]; then date="gdate" ; sed="gsed" ; fi
-    bu_assert_reset
+    bu_reset
 }
 
 function bu_unix_nano_time()
@@ -13,7 +13,7 @@ function bu_unix_nano_time()
     echo "$(eval $date +%s%N)"
 }
 
-function bu_assert_reset()
+function bu_reset()
 {
     _bu_time_passed_consumption=0
     _bu_time_failed_consumption=0
