@@ -3,13 +3,19 @@ pth="$(dirname $BASH_SOURCE)"
 
 function bu_init()
 {
+    bu_reset
+    bu_env
+}
+
+function bu_env()
+{
     date="date"
     if [ "`uname`" = "FreeBSD" ] || [ "`uname`" = "Darwin" ]; then date="gdate" ; sed="gsed" ; fi
-    bu_reset
 }
 
 function bu_unix_nano_time()
 {
+    [[ -z $date ]] && bu_env
     echo "$(eval $date +%s%N)"
 }
 
