@@ -1,4 +1,4 @@
-pth="$(dirname $(echo `pwd`/$BASH_SOURCE))"
+pth="$(dirname $BASH_SOURCE)"
 . "$pth/ColorEchoForShell/dist/ColorEcho.bash"
 
 function bu_init()
