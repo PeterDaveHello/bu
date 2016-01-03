@@ -23,6 +23,9 @@ else
 fi
 
 bu_init
-. "`command ls $BU_TESTS_PATH/*.bu.sh 2>/dev/null`" 2>/dev/null
+for tests in `command ls $BU_TESTS_PATH/*.bu.sh 2>/dev/null`
+do
+    . $tests
+done
 bu_test_result
 exit $(bu_return)
