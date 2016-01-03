@@ -25,3 +25,4 @@ fi
 bu_init
 . "`command ls $pth/test/*.bu.sh 2>/dev/null`" 2>/dev/null
 bu_test_result
+exit $(bu_return)
