@@ -100,7 +100,7 @@ function bu_test_result()
     echo.Magenta "Time consumption on passed test: $(bu_nano_sec_to_sec $_bu_time_passed_consumption) sec(s)"
     echo.Red     "Failed test ✗ $_bu_assert_failed"
     echo.Magenta "Time consumption on failed test: $(bu_nano_sec_to_sec $_bu_time_failed_consumption) sec(s)"
-    echo.Purple  "Passed this round $(bu_is_pass)"
+    echo.Purple  "Passed this round? $(bu_is_pass)"
 }
 
 function bu_is_pass()
