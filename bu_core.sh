@@ -10,6 +10,7 @@ function bu_init()
 function bu_env()
 {
     date="date"
+    sed="sed"
     if [ "`uname`" = "FreeBSD" ] || [ "`uname`" = "Darwin" ]; then date="gdate" ; sed="gsed" ; fi
 }
 
